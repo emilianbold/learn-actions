@@ -8,7 +8,7 @@
 #define apppublisher "Emi"
 #define appemail "emi@openbeans.org"
 #define appsourcedir "openbeans"
-#define licensefile appsourcedir + "\LICENSE"
+#define licensefile "a.txt"
 #define iconfile "coolbeans.ico"
 #define SrcApp "netbeans" + "64.exe"
 
