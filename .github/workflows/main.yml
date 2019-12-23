@@ -17,7 +17,7 @@ jobs:
       with:
         name: a.txt
         path: a.txt
-    - name: Upload a.txt
+    - name: Upload setup.iss
       uses: actions/upload-artifact@v1
       with:
         name: setup.iss
@@ -26,12 +26,17 @@ jobs:
   windows:
     name: Build Windows 64bit installer
     needs: build
-    runs-on: windows
+    runs-on: [windows-latest]
     steps:
       - name: Download a.txt
         uses: actions/download-artifact@v1
         with:
           name: a.txt
+          path: .
+      - name: Download setup.iss
+        uses: actions/download-artifact@v1
+        with:
+          name: setup.iss
           path: .
       - name: Create installer
         shell: bash
