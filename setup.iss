@@ -37,7 +37,7 @@ DisableProgramGroupPage=yes
 
 LicenseFile= {#licensefile}
 OutputBaseFilename={#appname} Setup
-SetupIconFile={#iconfile}
+;;SetupIconFile={#iconfile}
 Compression=lzma
 SolidCompression=yes
 
