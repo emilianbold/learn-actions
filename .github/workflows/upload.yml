@@ -1,0 +1,73 @@
+name: Upload check
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - name: Run build.sh
+      run: |
+        sudo apt-get install zip
+        echo "Hello world" > a.txt
+        zip a.zip a.txt
+        echo 'Pseudo' > fake.zip
+    - name: Upload a.txt
+      uses: actions/upload-artifact@v1
+      with:
+        name: a.txt
+        path: a.txt
+    - name: Upload a.zip
+      uses: actions/upload-artifact@v1
+      with:
+        name: a.zip
+        path: a.zip
+    - name: Upload fake.zip
+      uses: actions/upload-artifact@v1
+      with:
+        name: fake.zip
+        path: fake.zip
+    - name: Upload a.zip as b.zip
+      uses: actions/upload-artifact@v1
+      with:
+        name: b.zip
+        path: a.zip
+        
+  check:
+    name: Check unzip
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download a.txt
+        uses: actions/download-artifact@v1
+        with:
+          name: a.txt
+          path: .
+      - name: ls
+        shell: bash
+        run: ls -R
+      - name: Download a.zip
+        uses: actions/download-artifact@v1
+        with:
+          name: a.zip
+          path: .
+      - name: ls
+        shell: bash
+        run: ls -R
+      - name: Download fake.zip
+        uses: actions/download-artifact@v1
+        with:
+          name: fake.zip
+          path: .
+      - name: ls
+        shell: bash
+        run: ls -R
+      - name: Download b.zip
+        uses: actions/download-artifact@v1
+        with:
+          name: b.zip
+          path: .
+      - name: ls
+        shell: bash
+        run: ls -R
