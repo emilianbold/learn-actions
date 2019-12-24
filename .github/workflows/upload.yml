@@ -46,7 +46,7 @@ jobs:
           path: .
       - name: ls
         shell: bash
-        run: ls -R
+        run: ls -lR
       - name: Download a.zip
         uses: actions/download-artifact@v1
         with:
@@ -54,7 +54,7 @@ jobs:
           path: .
       - name: ls
         shell: bash
-        run: ls -R
+        run: ls -lR
       - name: Download fake.zip
         uses: actions/download-artifact@v1
         with:
@@ -62,7 +62,7 @@ jobs:
           path: .
       - name: ls
         shell: bash
-        run: ls -R
+        run: ls -lR
       - name: Download b.zip
         uses: actions/download-artifact@v1
         with:
@@ -70,4 +70,4 @@ jobs:
           path: .
       - name: ls
         shell: bash
-        run: ls -R
+        run: ls -lR
